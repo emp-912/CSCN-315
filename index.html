@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xiang You's portfolio</title>
+    <style>
+      * {
+        background-color: #fef9e1;
+        font-family: "Libre Baskerville", serif;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Main header section with personal information -->
+    <h1>Xiang You</h1>
+    <img src="./cat.jpg" height="300" alt="That's my cat" />
+    <hr />
+    <h2>Summary</h2>
+    <!-- Summary of personal background and major -->
+    <div class="Summary">
+      <p>
+        My name is Xiang You, nicknamed Bob. I come from Chongqing, China, a
+        city full of charm, where I am passionate about spicy food. My major is
+        Software Engineering and I am currently a sophomore.
+      </p>
+    </div>
+
+    <div class="Interesting-Info">
+      <h3>Interesting Information</h3>
+      <ul>
+        <li>Loves video games(Single-player game fans).</li>
+        <li>Loves animals (especially cats)</li>
+        <li>Passionate about learning on your own(With Udemy)</li>
+        <a href="https://www.udemy.com/">Udemy.com</a>
+      </ul>
+    </div>
+    <div class="Feature">
+      <h3>Ideas for future website</h3>
+      <ol>
+        <li>
+          Design a website that can showcase Unity games to showcase your
+          project
+        </li>
+        <li>
+          Write an introductory website about myself to introduce myself to
+          prospective companies.
+        </li>
+      </ol>
+    </div>
+    <hr />
+    <div>
+      <form action="/submit" method="POST">
+        <!-- Name input field -->
+        <label for="name">name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+          required
+        /><br /><br />
+        <label for="email">email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        /><br /><br />
+        <button type="submit">submit</button>
+      </form>
+    </div>
+    <hr />
+
+    <a href="./contact.html">Contact Me</a>
+    <footer>
+      <p>Thank you for visiting my site!</p>
+    </footer>
+  </body>
+</html>
