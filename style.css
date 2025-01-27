@@ -1,13 +1,21 @@
-h1 {
+/*External style sheet*/
+#header {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 20px;
   text-decoration: underline;
 }
-p {
+.center {
+  text-align: center;
   line-height: 1.6;
   margin: 10px 0;
 }
+.image {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+/*Media Queries to make it more responsive to other devices*/
 @media (max-width: 600px) {
   body {
     padding: 10px;

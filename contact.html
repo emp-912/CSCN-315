@@ -5,26 +5,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Me</title>
-    <!--embeded style-->
+    <!--embeded style(!important to ensures this background is always applied)-->
     <style>
       body {
-        background-color: #d9dfc6 !important; /* Ensures this background is always applied */
+        background-color: #d9dfc6 !important;
         font-family: Arial, sans-serif;
         color: #1d1616;
+      }
+      li {
+        color: #4da1a9;
       }
     </style>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1 style="color: #1d1616; margin-bottom: 20px">Contact Me</h1>
-    <!--Inline style for override css style-->
-    <p>Tel: +4348959049</p>
-    <p>Email: youx8026@gmail.com</p>
-    <p>Address:</p>
-    <ul>
+    <div id="header">
+      <!--Inline style for override css style-->
+      <h1 style="color: #1d1616; margin-bottom: 20px">Contact Me</h1>
+    </div>
+    <div class="center">
+      <p>Tel: +4348959049</p>
+      <p style="color: chocolate">Email: youx8026@gmail.com</p>
+    </div>
+    <div class="center">
+      <p>Address:</p>
       <li>119 Cornerstone Street</li>
       <li>Lynchburg</li>
       <li>US</li>
-    </ul>
+      <!--class image to control image size and always in the center-->
+    </div>
+    <div class="image">
+      <img src="./dog-img.jpg" alt="dog-img" />
+    </div>
   </body>
 </html>
