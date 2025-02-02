@@ -3,82 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Xiang You's portfolio</title>
+    <title>Xiang You's Portfolio</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div id="header">
+    <nav class="topnav">
+      <a href="index.html">Home</a>
+      <a href="./about.html">About Me</a>
+      <a href="./features.html">Features</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+
+    <header id="header">
       <h1>Xiang You</h1>
-    </div>
-    <div class="image">
-      <img src="./cat.jpg" alt="That's my cat" />
-    </div>
+      <div class="image">
+        <img src="./cat.jpg" alt="Xiang You's cat" />
+      </div>
+    </header>
 
-    <hr />
-    <h2>Summary</h2>
-    <div class="summary">
-      <p>
-        My name is Xiang You, nicknamed Bob. I come from Chongqing, China, a
-        city full of charm, where I am passionate about spicy food. My major is
-        Software Engineering, and I am currently a sophomore.
-      </p>
-    </div>
+    <main>
+      <section class="summary">
+        <h2>Summary</h2>
+        <p>
+          My name is Xiang You, nicknamed Bob. I come from Chongqing, China, a
+          city full of charm, where I am passionate about spicy food. My major
+          is Software Engineering, and I am currently a sophomore.
+        </p>
+      </section>
 
-    <div class="interesting-info">
-      <h3>Interesting Information</h3>
-      <ul>
-        <li>Loves video games (Single-player game fan).</li>
-        <li>Loves animals (especially cats).</li>
-        <li>Passionate about self-learning (With Udemy).</li>
-        <li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a></li>
-      </ul>
-    </div>
+      <section class="interesting-info">
+        <h3>Interesting Information</h3>
+        <ul>
+          <li>Loves video games (Single-player game fan).</li>
+          <li>Loves animals (especially cats).</li>
+          <li>Passionate about learning on my own (With Udemy).</li>
+          <a href="https://www.udemy.com/" target="_blank">Udemy.com</a>
+        </ul>
+      </section>
 
-    <div class="feature">
-      <h3>Ideas for Future Website</h3>
-      <ol>
-        <li>Design a website to showcase Unity games as projects.</li>
-        <li>
-          Create an introductory website to present myself to prospective
-          companies.
-        </li>
-      </ol>
-    </div>
-    <hr />
-    <div>
-      <form action="/submit" method="POST">
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required
-        />
-        <br /><br />
-        <label for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        />
-        <br /><br />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-    <hr />
-    <a href="./contact.html" target="_blank" class="contact-link">Contact Me</a>
+      <section class="feature">
+        <h3>Ideas for Future Website</h3>
+        <ol>
+          <li>
+            Design a website that can showcase Unity games to showcase your
+            projects.
+          </li>
+          <li>
+            Write an introductory website about myself to introduce myself to
+            prospective companies.
+          </li>
+        </ol>
+      </section>
+    </main>
+
     <footer>
       <p>Thank you for visiting my site!</p>
     </footer>
+
+    <script>
+      // Display a welcome message
+      if (!localStorage.getItem("welcomeMessageShown")) {
+        alert("Welcome to my portfolio!"); // Show the welcome message
+        localStorage.setItem("welcomeMessageShown", true);
+      }
+
+      // Change background color of the summary section on mouseover
+      let summaryElement = document.querySelector(".summary");
+      summaryElement.addEventListener("mouseover", function () {
+        summaryElement.style.backgroundColor = "#f0f0f0";
+      });
+
+      summaryElement.addEventListener("mouseout", function () {
+        summaryElement.style.backgroundColor = ""; // Reset the background color
+      });
+
+      document
+        .querySelector(".interesting-info")
+        .addEventListener("mouseover", function () {
+          document.querySelector(".interesting-info").style.color = "#ff6347"; // Change text color to Tomato
+        });
+
+      // Reset the text color
+      document
+        .querySelector(".interesting-info")
+        .addEventListener("mouseout", function () {
+          document.querySelector(".interesting-info").style.color = "#B82132";
+        });
+
+      // Dark Mode Toggle
+      const toggleButton = document.createElement("button");
+      toggleButton.textContent = "Toggle Dark Mode";
+      document.body.insertBefore(toggleButton, document.body.firstChild);
+
+      toggleButton.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+      });
+    </script>
   </body>
 </html>

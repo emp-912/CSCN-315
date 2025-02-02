@@ -1,9 +1,29 @@
 /*External style sheet*/
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .topnav a {
+  color: #ffffff;
+}
+
+.dark-mode .summary {
+  background-color: #1e1e1e;
+}
+
+.dark-mode .interesting-info {
+  color: #ff6347;
+}
 #header {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 20px;
   text-decoration: underline;
+}
+nav.topnav {
+  background-color: #6e8e59;
+  overflow: hidden;
 }
 .center {
   text-align: center;
@@ -14,6 +34,14 @@
   height: 300px;
   display: flex;
   justify-content: center;
+}
+body {
+  background-color: #d9dfc6;
+  color: #1d1616;
+  font-family: "Libre Baskerville", serif;
+}
+li {
+  color: #4da1a9;
 }
 /*Media Queries to make it more responsive to other devices*/
 @media (max-width: 600px) {

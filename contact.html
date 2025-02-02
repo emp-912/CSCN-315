@@ -5,27 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Me</title>
-    <!--embeded style(!important to ensures this background is always applied)-->
-    <style>
-      body {
-        background-color: #d9dfc6 !important;
-        font-family: Arial, sans-serif;
-        color: #1d1616;
-      }
-      li {
-        color: #4da1a9;
-      }
-    </style>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div id="header">
-      <!--Inline style for override css style-->
-      <h1 style="color: #1d1616; margin-bottom: 20px">Contact Me</h1>
+      <h1>Contact Me</h1>
     </div>
     <div class="center">
       <p>Tel: +4348959049</p>
-      <p style="color: chocolate">Email: youx8026@gmail.com</p>
+      <p>Email: youx8026@gmail.com</p>
     </div>
     <div class="center">
       <p>Address:</p>
@@ -34,8 +22,30 @@
       <li>US</li>
       <!--class image to control image size and always in the center-->
     </div>
+    <div>
+      <form action="/submit" method="POST">
+        <!-- Name input field -->
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+          required
+        /><br /><br />
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        /><br /><br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
     <div class="image">
-      <img src="./dog-img.jpg" alt="dog-img"/>
+      <img src="./dog-img.jpg" alt="dog-img" />
     </div>
   </body>
 </html>
