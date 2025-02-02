@@ -4,27 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xiang You's portfolio</title>
-    <!--embeded style-->
-    <style>
-      * {
-        background-color: #fef9e1;
-        font-family: "Libre Baskerville", serif;
-      }
-      li {
-        color: #4da1a9;
-      }
-    </style>
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
-
   <body>
-    <!-- Main header section with personal information -->
     <div id="header">
       <h1>Xiang You</h1>
     </div>
@@ -34,70 +23,60 @@
 
     <hr />
     <h2>Summary</h2>
-    <!-- Summary of personal background and major -->
-    <div class="Summary">
+    <div class="summary">
       <p>
         My name is Xiang You, nicknamed Bob. I come from Chongqing, China, a
         city full of charm, where I am passionate about spicy food. My major is
-        Software Engineering and I am currently a sophomore.
+        Software Engineering, and I am currently a sophomore.
       </p>
     </div>
 
-    <div class="Interesting-info">
+    <div class="interesting-info">
       <h3>Interesting Information</h3>
       <ul>
-        <li>Loves video games(Single-player game fans).</li>
-        <li>Loves animals (especially cats)</li>
-        <li>Passionate about learning on your own(With Udemy)</li>
-        <a href="https://www.udemy.com/" target="_blank">Udemy.com</a>
+        <li>Loves video games (Single-player game fan).</li>
+        <li>Loves animals (especially cats).</li>
+        <li>Passionate about self-learning (With Udemy).</li>
+        <li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a></li>
       </ul>
     </div>
-    <div class="Feature">
-      <h3>Ideas for future website</h3>
+
+    <div class="feature">
+      <h3>Ideas for Future Website</h3>
       <ol>
+        <li>Design a website to showcase Unity games as projects.</li>
         <li>
-          Design a website that can showcase Unity games to showcase your
-          project
-        </li>
-        <li>
-          Write an introductory website about myself to introduce myself to
-          prospective companies.
+          Create an introductory website to present myself to prospective
+          companies.
         </li>
       </ol>
     </div>
     <hr />
     <div>
       <form action="/submit" method="POST">
-        <!-- Name input field -->
-        <label for="name">name:</label>
+        <label for="name">Name:</label>
         <input
           type="text"
           id="name"
           name="name"
           placeholder="Enter your name"
           required
-        /><br /><br />
-        <label for="email">email:</label>
+        />
+        <br /><br />
+        <label for="email">Email:</label>
         <input
           type="email"
           id="email"
           name="email"
           placeholder="Enter your email"
           required
-        /><br /><br />
-        <button type="submit">submit</button>
+        />
+        <br /><br />
+        <button type="submit">Submit</button>
       </form>
     </div>
     <hr />
-
-    <!--Open a new link contactme page-->
-    <a
-      href="./contact.html"
-      target="_blank"
-      style="text-decoration: none; margin-right: 20px"
-      ;
-      >Contact Me</a
-    >
+    <a href="./contact.html" target="_blank" class="contact-link">Contact Me</a>
     <footer>
       <p>Thank you for visiting my site!</p>
     </footer>
