@@ -1,10 +1,10 @@
-// Welcome message
+//Welcome message
 if (!localStorage.getItem("welcomeMessageShown")) {
   alert("Welcome to my portfolio!");
   localStorage.setItem("welcomeMessageShown", true);
 }
 
-// Dark Mode Toggle
+//Dark Mode Toggle
 const toggleButton = document.createElement("button");
 toggleButton.textContent = "Toggle Dark Mode";
 toggleButton.style.margin = "10px";
@@ -14,7 +14,7 @@ toggleButton.addEventListener("click", function () {
   document.body.classList.toggle("dark-mode");
 });
 
-// Form Handling
+//Form Handling
 document
   .getElementById("userForm")
   .addEventListener("submit", function (event) {
