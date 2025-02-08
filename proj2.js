@@ -1,106 +1,89 @@
-// Display a welcome message(only once)
+// Welcome message
 if (!localStorage.getItem("welcomeMessageShown")) {
-  alert("Welcome to my portfolio!"); // Show the welcome message
+  alert("Welcome to my portfolio!");
   localStorage.setItem("welcomeMessageShown", true);
 }
-// Change text color
-document
-  .querySelector(".interesting-info")
-  .addEventListener("mouseover", function () {
-    document.querySelector(".interesting-info").style.color = "#ff6347";
-  });
-
-// Reset the text color
-document
-  .querySelector(".interesting-info")
-  .addEventListener("mouseout", function () {
-    document.querySelector(".interesting-info").style.color = "#B82132";
-  });
 
 // Dark Mode Toggle
 const toggleButton = document.createElement("button");
 toggleButton.textContent = "Toggle Dark Mode";
-document.body.insertBefore(toggleButton, document.body.firstChild);
+toggleButton.style.margin = "10px";
+document.body.insertBefore(toggleButton, document.querySelector(".topnav"));
 
 toggleButton.addEventListener("click", function () {
   document.body.classList.toggle("dark-mode");
 });
 
-// Form submission handler
+// Form Handling
 document
   .getElementById("userForm")
   .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent page refresh
+    event.preventDefault();
 
-    // Get form elements
     const nameInput = document.getElementById("name");
     const ageInput = document.getElementById("age");
     const colorInput = document.getElementById("color");
     const errorDiv = document.getElementById("error");
     const resultsDiv = document.getElementById("results");
 
-    // Reset previous messages
     errorDiv.classList.add("hidden");
     resultsDiv.innerHTML = "";
 
-    // Validate inputs
-    if (!nameInput.value.trim() || !ageInput.value.trim()) {
-      showError("Please fill in all required fields");
-      return;
+    try {
+      if (!nameInput.value.trim() || !ageInput.value.trim()) {
+        throw new Error("Please fill in all required fields");
+      }
+
+      const age = parseInt(ageInput.value);
+      if (isNaN(age) || age < 0 || age > 120) {
+        throw new Error("Please enter a valid age (0-120)");
+      }
+
+      const birthYear = new Date().getFullYear() - age;
+      const funMessage = generateFunMessage(
+        nameInput.value.trim(),
+        colorInput.value.trim()
+      );
+
+      resultsDiv.innerHTML = `
+            <div class="result-card">
+                <h2>Hello, ${nameInput.value.trim()}!</h2>
+                <p>📅 Age in months: ${age * 12}</p>
+                <p>🎂 Estimated birth year: ${birthYear}</p>
+                <div class="fun-message">${funMessage}</div>
+            </div>
+        `;
+
+      console.log("User Input:", {
+        name: nameInput.value.trim(),
+        age: age,
+        favoriteColor: colorInput.value.trim(),
+      });
+      console.log("Calculations:", { birthYear });
+    } catch (error) {
+      errorDiv.textContent = error.message;
+      errorDiv.classList.remove("hidden");
+      console.warn("Validation Error:", error.message);
     }
-
-    const age = parseInt(ageInput.value);
-    if (isNaN(age) || age < 0 || age > 120) {
-      showError("Please enter a valid age (0-120)");
-      return;
-    }
-
-    // Perform calculations
-    const birthYear = calculateBirthYear(age);
-    const funMessage = generateFunMessage(
-      nameInput.value.trim(),
-      colorInput.value.trim()
-    );
-
-    // Display results
-    resultsDiv.innerHTML = `
-        <h2>Hello, ${nameInput.value.trim()}!</h2>
-        <p>Age in months: ${age * 12}</p>
-        <p>You were probably born in ${birthYear} (±1 year)</p>
-        <p>${funMessage}</p>
-    `;
-    resultsDiv.classList.remove("hidden");
-
-    // Log to console
-    console.log("User Input:", {
-      name: nameInput.value.trim(),
-      age: age,
-      favoriteColor: colorInput.value.trim(),
-    });
-    console.log("Calculations:", { birthYear });
   });
 
-// Calculate birth year based on current year
-function calculateBirthYear(age) {
-  const currentYear = new Date().getFullYear();
-  return currentYear - age;
-}
-
-// Generate personalized message
 function generateFunMessage(name, color) {
-  const messages = [
-    `Your favorite color (${color || "unknown"}) looks great on you!`,
-    `Have a wonderful day, ${name}!`,
-    `${name}, today is your day to shine!`,
-    `Keep smiling, ${name}! 😊`,
-  ];
-  return messages[Math.floor(Math.random() * messages.length)];
-}
+  const colorFacts = {
+    red: "🔴 Red is the first color babies see!",
+    blue: "🔵 Blue spaces reduce stress!",
+    green: "🟢 Green boosts creativity!",
+    yellow: "🟡 Most visible in daylight!",
+    purple: "🟣 Ancient purple dye from snails!",
+    default: "✨ The human eye sees 10 million colors!",
+  };
 
-// Show error message
-function showError(message) {
-  const errorDiv = document.getElementById("error");
-  errorDiv.textContent = message;
-  errorDiv.classList.remove("hidden");
-  console.warn("Validation Error:", message);
+  const messages = [
+    `${name}, your ${color || "favorite"} color is awesome! 😎`,
+    `🚀 ${color} is NASA's secret rocket color!`,
+    `🎨 Mix ${color} with pizza = ${color} pizza!`,
+    `🌈 ${color} represents creativity globally!`,
+  ];
+
+  const fact = colorFacts[color?.toLowerCase()] || colorFacts.default;
+  return `${messages[Math.floor(Math.random() * messages.length)]}\n\n${fact}`;
 }
