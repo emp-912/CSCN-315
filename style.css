@@ -5,6 +5,9 @@ body.dark-mode {
   background-color: #121212;
   color: #ffffff;
 }
+.udemy {
+  text-decoration: none;
+}
 
 .dark-mode .topnav a {
   color: #ffffff;
@@ -27,18 +30,22 @@ body.dark-mode {
   color: #81bfda;
 }
 
-/* Navigation Bar Styles */
 nav.topnav {
-  background-color: #6e8e59;
-  padding: 10px;
-  text-align: right;
-  font-size: 16px;
+  background-color: #7886c7;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
 }
+
 .topnav a {
-  text-decoration: none; /* Removes underline */
-  color: black; /* Optional: Set a default color */
-  padding: 10px;
-  display: inline-block;
+  text-decoration: none;
+  color: #1d1616;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: inline-block; /* Maintain original behavior */
 }
 
 .center {
@@ -62,6 +69,12 @@ body {
 
 li {
   color: #4da1a9;
+}
+
+form {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 /* Media Queries for Responsive Design */
@@ -95,4 +108,39 @@ li {
   ul {
     padding-left: 30px;
   }
+}
+
+.result-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.result-card h2 {
+  color: #4da1a9;
+  margin-bottom: 15px;
+}
+
+.result-card p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.fun-message {
+  background: #f8f9fa;
+  padding: 15px;
+  border-left: 4px solid #81bfda;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+.dark-mode .result-card {
+  background: #2d2d2d;
+}
+
+.dark-mode .fun-message {
+  background: #1e1e1e;
+  border-color: #4da1a9;
 }
