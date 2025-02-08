@@ -25,7 +25,7 @@ document
     const colorInput = document.getElementById("color");
     const errorDiv = document.getElementById("error");
     const resultsDiv = document.getElementById("results");
-
+    s;
     errorDiv.classList.add("hidden");
     resultsDiv.innerHTML = "";
 
