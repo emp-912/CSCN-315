@@ -6,7 +6,7 @@ const weekdayTasks = {
   tuesday: ["Develop new features", "Design system architecture"],
   wednesday: ["Fix bugs", "Client call at 4 PM"],
   thursday: ["Research new technologies", "Write documentation"],
-  friday: ["Deploy updates", "Plan next sprint"],
+  friday: ["Deploy updates", "Plan next meeting"],
   saturday: ["Attend workshop", "Work on personal project"],
   sunday: ["Plan the upcoming week", "Rest and recharge"],
 };
