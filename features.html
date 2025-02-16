@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Features</title>
+    <title>Portfolio Features - Weekly Task Planner</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,5 +19,18 @@
       <a href="./features.html">Features</a>
       <a href="./contact.html">Contact</a>
     </nav>
+
+    <main>
+      <h1>Weekly Task Planner</h1>
+      <p>Enter a weekday to see your tasks for that day:</p>
+      <input type="text" id="weekdayInput" placeholder="e.g., Monday" />
+      <button onclick="displayTasks()">Show Tasks</button>
+      <div id="output">
+        <!-- The tasks will be displayed here -->
+      </div>
+    </main>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="proj3.js"></script>
   </body>
 </html>
