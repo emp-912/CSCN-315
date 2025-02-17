@@ -1,6 +1,5 @@
-// -------------------------------
 // 1. Define tasks for each weekday using an object
-// -------------------------------
+
 const weekdayTasks = {
   monday: ["Team meeting at 9 AM", "Review project goals"],
   tuesday: ["Develop new features", "Design system architecture"],
@@ -11,9 +10,8 @@ const weekdayTasks = {
   sunday: ["Plan the upcoming week", "Rest and recharge"],
 };
 
-// -------------------------------
 // 2. Function to process user input and display tasks for the entered weekday
-// -------------------------------
+
 function displayTasks() {
   // Get the user's input and trim whitespace, converting to lowercase for consistency
   const inputField = document.getElementById("weekdayInput");
@@ -26,9 +24,8 @@ function displayTasks() {
     return;
   }
 
-  // -------------------------------
   // 3. Use a switch statement to determine tasks based on the weekday
-  // -------------------------------
+
   let tasks = [];
   switch (day) {
     case "monday":
@@ -58,9 +55,8 @@ function displayTasks() {
       return;
   }
 
-  // -------------------------------
   // 4. Use a for loop to create a list of tasks for display
-  // -------------------------------
+
   let html = `<h2>Tasks for ${
     day.charAt(0).toUpperCase() + day.slice(1)
   }:</h2><ul>`;
