@@ -1,5 +1,4 @@
 // 1. Define tasks for each weekday using an object
-
 const weekdayTasks = {
   monday: ["Team meeting at 9 AM", "Review project goals"],
   tuesday: ["Develop new features", "Design system architecture"],
@@ -11,9 +10,7 @@ const weekdayTasks = {
 };
 
 // 2. Function to process user input and display tasks for the entered weekday
-
 function displayTasks() {
-  // Get the user's input and trim whitespace, converting to lowercase for consistency
   const inputField = document.getElementById("weekdayInput");
   const outputDiv = document.getElementById("output");
   let day = inputField.value.trim().toLowerCase();
@@ -24,8 +21,23 @@ function displayTasks() {
     return;
   }
 
-  // 3. Use a switch statement to determine tasks based on the weekday
+  //----- Fun added conditions -----
+  if (day === "funday") {
+    outputDiv.innerHTML =
+      "<p>🌞 Every day is Funday when you love your work!</p>";
+    return;
+  } else if (day === "yesterday") {
+    outputDiv.innerHTML =
+      "<p>⏳ Yesterday's tasks are already done. Focus on today!</p>";
+    return;
+  } else if (day === "neverday") {
+    outputDiv.innerHTML =
+      "<p>🦄 This day exists only in magical unicorn calendars</p>";
+    return;
+  }
+  // ----- End of fun additions -----
 
+  //Original switch statement remains unchanged
   let tasks = [];
   switch (day) {
     case "monday":
@@ -56,7 +68,6 @@ function displayTasks() {
   }
 
   // 4. Use a for loop to create a list of tasks for display
-
   let html = `<h2>Tasks for ${
     day.charAt(0).toUpperCase() + day.slice(1)
   }:</h2><ul>`;
@@ -65,6 +76,11 @@ function displayTasks() {
   }
   html += "</ul>";
 
-  // Output the final content in the designated output div
+  if (day === "friday") {
+    html += "<p>🎉 TGIF! Remember to dance like nobody's watching!</p>";
+  } else if (day === "monday") {
+    html += "<p>☕ Extra coffee power activated!</p>";
+  }
+
   outputDiv.innerHTML = html;
 }
