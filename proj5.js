@@ -1,95 +1,142 @@
-// proj5.js
-
-/* 
-  This script builds a horizontal gallery (using a flex container) with navigation buttons on the left and right.
-  When an image is clicked, an overlay is created that displays a zoomed-in version.
-  Demonstrates usage of createElement and appendChild.
-*/
-
-// Array of image objects (each with a thumbnail and full-size image)
 const images = [
-  { thumb: "redDead.jpg", full: "redDead.jpg" },
-  { thumb: "witcher3.jpg", full: "witcher3.jpg" },
-  { thumb: "dyingLight.jpg", full: "dyingLight.jpg" },
-  { thumb: "tombRaider.jpg", full: "tombRaider.jpg" },
+  {
+    thumb: "images/redDead.jpg",
+    full: "images/redDead.jpg",
+    caption: "Red Dead Redemption 2: Western Adventure",
+  },
+  {
+    thumb: "images/witcher3.jpg",
+    full: "images/witcher3.jpg",
+    caption: "The Witcher 3: Wild Hunt",
+  },
+  {
+    thumb: "images/dyingLight.jpg",
+    full: "images/dyingLight.jpg",
+    caption: "Dying Light 2: Stay Human",
+  },
+  {
+    thumb: "images/tombRaider.jpg",
+    full: "images/tombRaider.jpg",
+    caption: "Shadow of the Tomb Raider",
+  },
 ];
 
-// Reference to the gallery container
+let currentImageIndex = 0;
 const galleryContainer = document.getElementById("gallery-container");
 
-// Dynamically add images to the gallery container
+// Create gallery images dynamically
 images.forEach((imgObj, index) => {
   const imgElem = document.createElement("img");
   imgElem.src = imgObj.thumb;
-  imgElem.alt = `Image ${index + 1}`;
-  // When an image is clicked, open the zoom overlay
-  imgElem.addEventListener("click", function () {
-    openOverlay(imgObj.full);
-  });
+  imgElem.alt = `Game ${index + 1}`;
+  imgElem.addEventListener("click", () => openOverlay(imgObj.full, index));
   galleryContainer.appendChild(imgElem);
 });
 
-// Navigation buttons for scrolling the gallery horizontally
-const prevBtn = document.getElementById("gallery-prev");
-const nextBtn = document.getElementById("gallery-next");
-
-prevBtn.addEventListener("click", function () {
-  galleryContainer.scrollLeft -= 200; // Adjust scroll amount as needed
+// Navigation buttons
+document.getElementById("gallery-prev").addEventListener("click", () => {
+  galleryContainer.scrollLeft -= 250;
 });
 
-nextBtn.addEventListener("click", function () {
-  galleryContainer.scrollLeft += 200;
+document.getElementById("gallery-next").addEventListener("click", () => {
+  galleryContainer.scrollLeft += 250;
 });
 
-// Function to open an overlay displaying the zoomed image
-function openOverlay(imageSrc) {
-  // Create overlay div
+function openOverlay(imageSrc, index) {
+  currentImageIndex = index;
+
   const overlay = document.createElement("div");
   overlay.id = "overlay";
 
-  // Create a close button for the overlay
-  const closeBtn = document.createElement("button");
-  closeBtn.className = "close-overlay";
-  closeBtn.textContent = "X";
-  closeBtn.addEventListener("click", function () {
-    document.body.removeChild(overlay);
-  });
-  overlay.appendChild(closeBtn);
+  const spinner = document.createElement("div");
+  spinner.className = "spinner";
 
-  // Create the image element for the zoomed version
+  const prevArrow = document.createElement("div");
+  prevArrow.className = "nav-arrow prev";
+  prevArrow.innerHTML = "&lt;";
+
+  const nextArrow = document.createElement("div");
+  nextArrow.className = "nav-arrow next";
+  nextArrow.innerHTML = "&gt;";
+
+  const caption = document.createElement("div");
+  caption.className = "caption";
+  caption.textContent = images[index].caption;
+
+  const position = document.createElement("div");
+  position.className = "position-indicator";
+  position.textContent = `${index + 1}/${images.length}`;
+
+  // Main image
   const zoomedImg = document.createElement("img");
-  zoomedImg.alt = "Zoomed Image";
 
-  // Attach load event listener before setting src to ensure it fires even if cached
-  zoomedImg.addEventListener("load", function () {
-    console.log(
-      "Image loaded. Natural dimensions:",
-      zoomedImg.naturalWidth,
-      zoomedImg.naturalHeight
-    );
-    fixZoomImageSize(zoomedImg);
-  });
+  // Close button
+  const closeBtn = document.createElement("div");
+  closeBtn.className = "close-overlay";
+  closeBtn.textContent = "✕";
+  closeBtn.style.cssText = `
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+  `;
 
-  // Now set the src attribute
-  zoomedImg.src = imageSrc;
-  overlay.appendChild(zoomedImg);
-
-  // Append the overlay to the document body
+  overlay.append(
+    spinner,
+    prevArrow,
+    nextArrow,
+    caption,
+    position,
+    zoomedImg,
+    closeBtn
+  );
   document.body.appendChild(overlay);
+
+  prevArrow.addEventListener("click", () => navigate(-1));
+  nextArrow.addEventListener("click", () => navigate(1));
+  closeBtn.addEventListener("click", () => overlay.remove());
+  document.addEventListener("keydown", handleKeyPress);
+
+  // Load image
+  zoomedImg.onload = () => {
+    spinner.remove();
+    zoomedImg.style.animation = "fadeIn 0.5s ease";
+  };
+  zoomedImg.src = imageSrc;
 }
 
-/* 
-      Single function to fix all the zoomed image sizes.
-      It scales the image uniformly so that it fits within 90% of the viewport's width and height.
-  */
-function fixZoomImageSize(img) {
-  const maxWidth = window.innerWidth * 0.9;
-  const maxHeight = window.innerHeight * 0.9;
-  const naturalWidth = img.naturalWidth;
-  const naturalHeight = img.naturalHeight;
+function navigate(direction) {
+  currentImageIndex =
+    (currentImageIndex + direction + images.length) % images.length;
+  const overlay = document.getElementById("overlay");
+  if (overlay) {
+    const img = overlay.querySelector("img");
+    const caption = overlay.querySelector(".caption");
+    const position = overlay.querySelector(".position-indicator");
 
-  // Calculate scale without restricting scale > 1
-  const scale = Math.min(maxWidth / naturalWidth, maxHeight / naturalHeight);
-  img.style.width = naturalWidth * scale + "px";
-  img.style.height = naturalHeight * scale + "px";
+    img.src = images[currentImageIndex].full;
+    caption.textContent = images[currentImageIndex].caption;
+    position.textContent = `${currentImageIndex + 1}/${images.length}`;
+  }
+}
+
+// Keyboard controls
+function handleKeyPress(e) {
+  const overlay = document.getElementById("overlay");
+  if (!overlay) return;
+
+  switch (e.key) {
+    case "ArrowLeft":
+      navigate(-1);
+      break;
+    case "ArrowRight":
+      navigate(1);
+      break;
+    case "Escape":
+      overlay.remove();
+      break;
+  }
 }

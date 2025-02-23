@@ -179,91 +179,169 @@ body.dark-mode .fun-message {
   }
 }
 
-/* Basic page reset and font styling */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #2d336b;
+  color: #fff2f2;
+  margin: 0;
+  padding: 20px;
 }
 
-/* Gallery wrapper positions the nav buttons on each side of the gallery */
+/* Navigation */
+nav.topnav {
+  background-color: #7886c7;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.topnav a {
+  color: #1d1616;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.topnav a:hover {
+  background-color: #5a7249;
+  color: #ffffff;
+}
+
+/* Gallery Styles */
 .gallery-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px;
+  margin: 50px 20px;
 }
 
-/* Gallery container displays images horizontally */
 .gallery-container {
   display: flex;
   overflow-x: auto;
-  gap: 10px;
+  gap: 15px;
   padding: 10px;
   scroll-behavior: smooth;
   max-width: 80%;
 }
 
-/* Thumbnail image styling */
 .gallery-container img {
-  height: 150px; /* adjust as needed */
+  height: 180px;
+  border-radius: 8px;
   cursor: pointer;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+  transition: transform 0.3s ease;
+  border: 2px solid #81bfda;
 }
 
-/* Navigation buttons on either side of the gallery */
+.gallery-container img:hover {
+  transform: scale(1.05);
+}
+
 .gallery-nav {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  font-size: 24px;
-  padding: 10px;
+  background-color: #7886c7;
+  border: none;
+  color: white;
+  padding: 15px;
+  font-size: 1.5rem;
   cursor: pointer;
-  border-radius: 4px;
-  margin: 0 10px;
+  border-radius: 5px;
 }
 
-.gallery-nav:hover {
-  background-color: #eee;
-}
-
-/* Overlay styles for zoomed image */
+/* Overlay Styles */
 #overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 0; /* Remove any padding */
+  margin: 0;
 }
 
-/* Zoomed image styling inside overlay */
 #overlay img {
-  border: 5px solid #fff;
-  border-radius: 4px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-/* Close button in the top-right corner of the overlay */
-#overlay .close-overlay {
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #81bfda;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: #fff;
-  border: none;
-  font-size: 20px;
-  padding: 5px 10px;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: white;
   cursor: pointer;
-  border-radius: 4px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 1001;
+  padding: 15px;
+  background: rgba(129, 191, 218, 0.3);
+  border-radius: 50%;
+  user-select: none;
+  transition: all 0.3s ease;
 }
 
-#overlay .close-overlay:hover {
-  background: #ddd;
+.nav-arrow:hover {
+  background: rgba(129, 191, 218, 0.7);
+}
+
+.nav-arrow.prev {
+  left: 30px;
+}
+.nav-arrow.next {
+  right: 30px;
+}
+
+.caption {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+}
+
+.position-indicator {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+/* Animations */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-container {
+    max-width: 90%;
+  }
+  .gallery-nav {
+    padding: 10px;
+  }
 }
