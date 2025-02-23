@@ -83,30 +83,13 @@ function openOverlay(imageSrc) {
       It scales the image uniformly so that it fits within 90% of the viewport's width and height.
   */
 function fixZoomImageSize(img) {
-  // Maximum allowed dimensions (90% of viewport)
   const maxWidth = window.innerWidth * 0.9;
   const maxHeight = window.innerHeight * 0.9;
-
-  // Get the image's natural dimensions
   const naturalWidth = img.naturalWidth;
   const naturalHeight = img.naturalHeight;
 
-  console.log("Max allowed size:", maxWidth, maxHeight);
-
-  // Calculate scale factor so that the image fits within maxWidth and maxHeight
-  let scale = Math.min(maxWidth / naturalWidth, maxHeight / naturalHeight);
-
-  // If the image is smaller than the max dimensions, keep its natural size
-  if (scale > 1) {
-    scale = 1;
-  }
-
-  // Log the calculated scale factor
-  console.log("Calculated scale factor:", scale);
-
-  // Set the image's displayed width and height based on the calculated scale
+  // Calculate scale without restricting scale > 1
+  const scale = Math.min(maxWidth / naturalWidth, maxHeight / naturalHeight);
   img.style.width = naturalWidth * scale + "px";
   img.style.height = naturalHeight * scale + "px";
-
-  console.log("New displayed size:", img.style.width, img.style.height);
 }

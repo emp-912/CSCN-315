@@ -242,8 +242,6 @@ body {
 
 /* Zoomed image styling inside overlay */
 #overlay img {
-  max-width: 90%;
-  max-height: 90%;
   border: 5px solid #fff;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -260,6 +258,10 @@ body {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 4px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
 }
 
 #overlay .close-overlay:hover {
