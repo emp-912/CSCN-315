@@ -35,30 +35,116 @@
       <!--class image to control image size and always in the center-->
     </div>
     <div>
-      <form action="/submit" method="POST">
-        <!-- Name input field -->
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required
-        /><br /><br />
-        <label for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        /><br /><br />
-        <button type="submit">Submit</button>
+      <form id="registrationForm" novalidate>
+        <!-- Full Name -->
+        <div>
+          <label for="fullName">Full Name:</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="A non-empty string"
+            required
+          />
+          <div class="error" id="nameError"></div>
+          <li>no numbers or special characters</li>
+        </div>
+
+        <!-- Username -->
+        <div>
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="6-15 characters long"
+            required
+          />
+          <div class="error" id="userError"></div>
+          <li>
+            Containing only(letters and numbers), and it cannot start with a
+            number.
+          </li>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="user@example.com"
+          />
+          <div class="error" id="emailError"></div>
+        </div>
+        <div>
+          <!-- Password -->
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <div class="password-requirements">
+            <ul>
+              <li id="lengthReq">8-20 characters</li>
+              <li id="upperReq">At least 1 uppercase letter</li>
+              <li id="lowerReq">At least 1 lowercase letter</li>
+              <li id="numberReq">At least 1 number</li>
+              <li id="specialReq">At least 1 special character (!@#$%^&*)</li>
+            </ul>
+          </div>
+          <div class="error" id="passError"></div>
+        </div>
+        <!-- Confirm Password -->
+        <div>
+          <label for="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+          <div class="error" id="confirmError"></div>
+        </div>
+
+        <!-- Phone Number -->
+        <div>
+          <label for="phone">Phone Number:</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="123-456-7890"
+            required
+          />
+          <div class="error" id="phoneError"></div>
+        </div>
+
+        <!-- Date of Birth -->
+        <div>
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" required />
+          <div class="error" id="dobError"></div>
+        </div>
+
+        <!-- Agree to Terms -->
+        <div>
+          <label for="agree"
+            >I agree to the terms and conditions<input
+              type="checkbox"
+              id="agree"
+              name="agree"
+              required
+          /></label>
+          <div class="error" id="agreeError"></div>
+        </div>
+
+        <button type="submit">Register</button>
+        <div id="formMessage"></div>
       </form>
     </div>
     <div class="image">
       <img src="./dog-img.jpg" alt="dog-img" />
     </div>
     <script src="proj2.js" charset="UTF-8"></script>
+    <script src="proj6.js" charset="UTF-8"></script>
   </body>
 </html>
