@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         errors.push("Username must be 6-15 characters starting with a letter");
         showError(
           document.getElementById("userError"),
-          "Invalid username format"
+          "Invalid username format (Containing only(letters and numbers), and it cannot start with a number.)"
         );
       }
 
