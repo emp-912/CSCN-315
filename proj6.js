@@ -64,7 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // Full Name Validation
       if (!validateName(elements.fullName.value)) {
         errors.push("Full Name must contain only letters and spaces");
-        showError(document.getElementById("nameError"), "Invalid name format");
+        showError(
+          document.getElementById("nameError"),
+          "Invalid name format(no numbers or special characters)"
+        );
       }
 
       // Username Validation
