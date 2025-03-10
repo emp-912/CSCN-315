@@ -5,9 +5,15 @@
 }
 ul,
 ol {
-  list-style-position: inside; /* Optional: Moves bullets/numbers inside */
-  text-align: center; /* Centers text inside the list */
-  display: inline-block; /* Makes the list behave like an inline element */
+  list-style-position: inside;
+  text-align: center;
+  display: inline-block;
+}
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Ensures text aligns with checkboxes */
 }
 
 .success {
@@ -15,7 +21,7 @@ ol {
 }
 button {
   display: block;
-  margin: 10px auto; /* Centers the button */
+  margin: 10px auto;
 }
 body {
   font-family: Arial, sans-serif;
@@ -189,15 +195,6 @@ body.dark-mode .fun-message {
   padding: 10px;
   border-radius: 4px;
   margin: 10px 0;
-}
-
-@media (max-width: 768px) {
-  nav.topnav {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.5rem;
-    padding: 0.5rem;
-  }
 }
 
 /* Navigation */
