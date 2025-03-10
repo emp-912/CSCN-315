@@ -1,4 +1,3 @@
-<!--Second html page-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,7 +31,6 @@
       <li>119 Cornerstone Street</li>
       <li>Lynchburg</li>
       <li>US</li>
-      <!--class image to control image size and always in the center-->
     </div>
     <div>
       <form id="registrationForm" novalidate>
@@ -73,8 +71,9 @@
           />
           <div class="error" id="emailError"></div>
         </div>
+
+        <!-- Password -->
         <div>
-          <!-- Password -->
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required />
           <div class="password-requirements">
@@ -88,6 +87,7 @@
           </div>
           <div class="error" id="passError"></div>
         </div>
+
         <!-- Confirm Password -->
         <div>
           <label for="confirmPassword">Confirm Password:</label>
@@ -100,14 +100,14 @@
           <div class="error" id="confirmError"></div>
         </div>
 
-        <!-- Phone Number -->
+        <!-- Phone Number (Updated Placeholder) -->
         <div>
           <label for="phone">Phone Number:</label>
           <input
             type="tel"
             id="phone"
             name="phone"
-            placeholder="123-456-7890"
+            placeholder="e.g., 123-456-7890 or 1234567890"
             required
           />
           <div class="error" id="phoneError"></div>
@@ -120,15 +120,29 @@
           <div class="error" id="dobError"></div>
         </div>
 
+        <!-- Interests Checkboxes-->
+        <div>
+          <label>Interests (select all that apply):</label><br />
+          <input type="checkbox" name="interests" value="Reading" />
+          Reading<br />
+          <input type="checkbox" name="interests" value="Sports" /> Sports<br />
+          <input type="checkbox" name="interests" value="Music" /> Music<br />
+          <input type="checkbox" name="interests" value="Traveling" />
+          Traveling<br />
+        </div>
+
+        <!-- File Upload-->
+        <div>
+          <label for="fileUpload">Upload a file:</label>
+          <input type="file" id="fileUpload" name="fileUpload" />
+        </div>
+
         <!-- Agree to Terms -->
         <div>
-          <label for="agree"
-            >I agree to the terms and conditions<input
-              type="checkbox"
-              id="agree"
-              name="agree"
-              required
-          /></label>
+          <label for="agree">
+            I agree to the terms and conditions
+            <input type="checkbox" id="agree" name="agree" required />
+          </label>
           <div class="error" id="agreeError"></div>
         </div>
 
@@ -136,10 +150,23 @@
         <div id="formMessage"></div>
       </form>
     </div>
+
+    <!-- Display Sections-->
+    <div id="selectedInterests">
+      <h2>Selected Interests:</h2>
+      <ul id="interestsList"></ul>
+    </div>
+
+    <div id="fileContentSection">
+      <h2>File Content:</h2>
+      <pre id="fileContent"></pre>
+    </div>
+
     <div class="image">
       <img src="./dog-img.jpg" alt="dog-img" />
     </div>
     <script src="proj2.js" charset="UTF-8"></script>
     <script src="proj6.js" charset="UTF-8"></script>
+    <script src="proj7.js" charset="UTF-8"></script>
   </body>
 </html>

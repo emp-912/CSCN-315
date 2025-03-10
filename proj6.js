@@ -183,4 +183,58 @@ document.addEventListener("DOMContentLoaded", () => {
       showError(document.getElementById(`${target.name}Error`), error.message);
     }
   });
+  document.addEventListener("DOMContentLoaded", () => {
+    const validatePhone = (phone) => {
+      const digits = phone.replace(/\D/g, ""); // Remove all non-digit characters
+      return digits.length === 10; // Check if there are exactly 10 digits
+    };
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      clearErrors();
+
+      try {
+        const errors = [];
+        const elements = form.elements;
+
+        // ... (other validations remain unchanged)
+
+        // Phone Validation (Updated)
+        if (!validatePhone(elements.phone.value)) {
+          errors.push("Phone number must contain exactly 10 digits");
+          showError(
+            document.getElementById("phoneError"),
+            "Invalid phone number (must contain exactly 10 digits)"
+          );
+        }
+
+        // ... (rest of the submit handler remains unchanged)
+      } catch (error) {
+        // ... (error handling remains unchanged)
+      }
+    });
+
+    // Real-time validation (Updated for phone)
+    form.addEventListener("input", (e) => {
+      const target = e.target;
+      clearErrors();
+
+      try {
+        switch (target.name) {
+          // ... (other cases remain unchanged)
+          case "phone":
+            if (!validatePhone(target.value))
+              throw new Error(
+                "Invalid phone number (must contain exactly 10 digits)"
+              );
+            break;
+        }
+      } catch (error) {
+        showError(
+          document.getElementById(`${target.name}Error`),
+          error.message
+        );
+      }
+    });
+  });
 });
