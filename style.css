@@ -44,6 +44,15 @@ nav.topnav {
   gap: 1.5rem;
 }
 
+.topnav {
+  background-color: #7886c7;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
 .topnav a {
   text-decoration: none;
   color: #1d1616;
