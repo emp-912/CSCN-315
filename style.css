@@ -13,6 +13,7 @@ body {
   margin: 0;
   padding: 20px;
   line-height: 1.6;
+  text-align: center;
 }
 
 /* Navigation */
@@ -184,14 +185,6 @@ body.dark-mode .fun-message {
     gap: 0.5rem;
     padding: 0.5rem;
   }
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #2d336b;
-  color: #fff2f2;
-  margin: 0;
-  padding: 20px;
 }
 
 /* Navigation */

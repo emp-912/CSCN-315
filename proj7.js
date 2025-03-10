@@ -1,5 +1,4 @@
 // proj7.js
-// Part 1: Handle interests selection with checkboxes
 const interestsCheckboxes = document.querySelectorAll(
   'input[name="interests"]'
 );
@@ -7,20 +6,19 @@ const interestsList = document.getElementById("interestsList");
 
 // Function to update the displayed list of selected interests
 function updateInterestsList(selectedInterests) {
-  interestsList.innerHTML = ""; // Clear the current list
+  interestsList.innerHTML = "";
   selectedInterests.forEach((interest) => {
     const li = document.createElement("li");
     li.textContent = interest;
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
-    // Add click event to remove the interest by unchecking the checkbox
     removeBtn.addEventListener("click", () => {
       const checkbox = Array.from(interestsCheckboxes).find(
         (cb) => cb.value === interest
       );
       if (checkbox) {
-        checkbox.checked = false; // Uncheck the corresponding checkbox
-        checkbox.dispatchEvent(new Event("change")); // Trigger the change event
+        checkbox.checked = false;
+        checkbox.dispatchEvent(new Event("change"));
       }
     });
     li.appendChild(removeBtn);
@@ -31,11 +29,10 @@ function updateInterestsList(selectedInterests) {
 // Add event listeners to checkboxes for real-time updates
 interestsCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", () => {
-    // Collect values of all checked checkboxes into an array
     const selectedInterests = Array.from(interestsCheckboxes)
       .filter((cb) => cb.checked)
       .map((cb) => cb.value);
-    updateInterestsList(selectedInterests); // Update the display
+    updateInterestsList(selectedInterests);
   });
 });
 
