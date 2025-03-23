@@ -197,8 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const errors = [];
         const elements = form.elements;
 
-        // ... (other validations remain unchanged)
-
         // Phone Validation (Updated)
         if (!validatePhone(elements.phone.value)) {
           errors.push("Phone number must contain exactly 10 digits");
