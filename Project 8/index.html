@@ -4,10 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Manager</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #task-form {
+        margin-bottom: 20px;
+      }
+      #output {
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
-    <h1 style="text-align: center">Task Manager</h1>
-    <script src="object.js"></script>
-    <!-- Runs all code inside objects.js -->
+    <h1>Task Manager</h1>
+    <div id="task-form">
+      <input type="text" id="task-title" placeholder="Task Title" />
+      <input type="text" id="task-desc" placeholder="Task Description" />
+      <button onclick="createTask()">Create Task</button>
+    </div>
+    <div id="output"></div>
+    <script type="module" src="object.js"></script>
   </body>
 </html>
